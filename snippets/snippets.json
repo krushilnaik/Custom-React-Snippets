@@ -1,0 +1,452 @@
+{
+	"Import React": {
+		"prefix": "imr",
+		"body": ["import React from 'react';\n"],
+		"description": "Import React"
+	},
+	"Import ReactDOM": {
+		"prefix": "imrd",
+		"body": ["import ReactDOM from 'react-dom';"],
+		"description": "Import ReactDOM"
+	},
+	"React Fragment": {
+		"prefix": "<>",
+		"body": ["<>", "\t$0", "</>"]
+	},
+	"setState": {
+		"prefix": "ss",
+		"body": ["this.setState({$0})"],
+		"description": "Enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses."
+	},
+	"setStateWithUpdater": {
+		"prefix": "ssu",
+		"body": [
+			"this.setState((state${1:, props}) => {",
+			"\treturn {${0:stateChange}}",
+			"})"
+		],
+		"description": "Enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses."
+	},
+	"CreateRefs": {
+		"prefix": "cref",
+		"body": "this.${1:name}Ref = React.createRef()",
+		"description": "Create Refs statement used inside constructor"
+	},
+	"CreateRefsInFunction": {
+		"prefix": "fcref",
+		"body": "const ${1:name}Ref = React.createRef()",
+		"description": "Create Refs statement used inside function component"
+	},
+	"ContextProvider": {
+		"prefix": "ctp",
+		"body": [
+			"<${1:Context}.Provider value=\"${2:value}\">",
+			"\t$0",
+			"</${1:Context}.Provider>"
+		],
+		"description": "Provider React Component for context object"
+	},
+	"Context Provider": {
+		"prefix": "cp",
+		"body": [
+			"export const $1 = React.createContext();",
+			"",
+			"const $1Provider = (props) => {",
+			"\t// Initial Provider State",
+			"\tconst state = {};",
+			"",
+			"\t// Reducer Function",
+			"\tconst $2 = (state, action) => {",
+			"\t\t",
+			"\t};",
+			"",
+			"\treturn (",
+			"\t\t<$1.Provider value={{state: state, $2}}>",
+			"\t\t\t{props.children}",
+			"\t\t</$1.Provider>",
+			"\t);",
+			"}",
+			"",
+			"export default $1Provider;"
+		],
+		"description": "Context Provider"
+	},
+	"ContextConsumer": {
+		"prefix": "ctc",
+		"body": [
+			"<${1:Context}.Consumer>",
+			"\t{${2:value} => ($0)}",
+			"</${1:Context}.Consumer>"
+		],
+		"description": "Consumer React Component for context object"
+	},
+	"ReactClassComponent": {
+		"prefix": "rcc",
+		"body": [
+			"import React, { ${2|PureComponent,Component|} } from 'react'",
+			"",
+			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
+			"\tconstructor(props) {",
+			"\t\tsuper(props)",
+			"",
+			"\t\tthis.state = {",
+			"\t\t\t",
+			"\t\t}",
+			"\t}",
+			"",
+			"\trender() {",
+			"\t\treturn (",
+			"\t\t\t$0",
+			"\t\t)",
+			"\t}",
+			"}",
+			"",
+			"export default $1"
+		],
+		"description": "Create a React Class Component or PureComponent"
+	},
+	"ReactClassComponentWithPropTypes": {
+		"prefix": "rccp",
+		"body": [
+			"import React, { ${2|PureComponent,Component|} } from 'react'",
+			"import PropTypes from 'prop-types'",
+			"",
+			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
+			"\tstatic propTypes = {}",
+			"",
+			"\tconstructor(props) {",
+			"\t\tsuper(props)",
+			"",
+			"\t\tthis.state = {",
+			"\t\t\t",
+			"\t\t}",
+			"\t}",
+			"",
+			"\trender() {",
+			"\t\treturn (",
+			"\t\t\t$0",
+			"\t\t)",
+			"\t}",
+			"}",
+			"",
+			"export default $1"
+		],
+		"description": "Create a React Class Component with PropTypes"
+	},
+	"ReactFunctionComponent": {
+		"prefix": "rfc",
+		"body": [
+			"import React from 'react'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}() {",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"export default $1",
+			""
+		],
+		"description": "Create a React Function Component"
+	},
+	"ReactFunctionMemoComponent": {
+		"prefix": "rfmc",
+		"body": [
+			"import React, { memo } from 'react'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}() {",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"export default memo($1)",
+			""
+		],
+		"description": "Create a memorized React Function Component"
+	},
+	"ReactClassComponentWithRedux": {
+		"prefix": "rccrdx",
+		"body": [
+			"import React, { ${2|PureComponent,Component|} } from 'react'",
+			"import { connect } from 'react-redux'",
+			"",
+			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
+			"\tconstructor(props) {",
+			"\t\tsuper(props)",
+			"",
+			"\t\tthis.state = {",
+			"\t\t\t",
+			"\t\t}",
+			"\t}",
+			"",
+			"\trender() {",
+			"\t\treturn (",
+			"\t\t\t$0",
+			"\t\t)",
+			"\t}",
+			"}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
+			""
+		],
+		"description": "Creates a React Class Component with connected redux"
+	},
+	"ReactClassComponentWithPropTypesWithRedux": {
+		"prefix": "rccprdx",
+		"body": [
+			"import React, { ${2|PureComponent,Component|} } from 'react'",
+			"import PropTypes from 'prop-types'",
+			"import { connect } from 'react-redux'",
+			"",
+			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
+			"\tstatic propTypes = {",
+			"\t\t",
+			"\t}",
+			"",
+			"\tconstructor(props) {",
+			"\t\tsuper(props)",
+			"",
+			"\t\tthis.state = {",
+			"\t\t\t",
+			"\t\t}",
+			"\t}",
+			"",
+			"\trender() {",
+			"\t\treturn (",
+			"\t\t\t$0",
+			"\t\t)",
+			"\t}",
+			"}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
+			""
+		],
+		"description": "Creates a React Class Component with PropTypes with connected redux"
+	},
+	"ReactFunctionComponentWithRedux": {
+		"prefix": "rfcrdx",
+		"body": [
+			"import React from 'react'",
+			"import { connect } from 'react-redux'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}() {",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
+			""
+		],
+		"description": "Creates a React Function Component with connected redux"
+	},
+	"ReactFunctionMemoComponentWithRedux": {
+		"prefix": "rfmcrdx",
+		"body": [
+			"import React, { memo } from 'react'",
+			"import { connect } from 'react-redux'",
+			"import PropTypes from 'prop-types'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}() {",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"$1.propTypes = {",
+			"",
+			"}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)(memo($1))",
+			""
+		],
+		"description": "Creates a memorized React Function Component with connected redux"
+	},
+	"ReactFunctionComponentWithPropTypesWithRedux": {
+		"prefix": "rfcprdx",
+		"body": [
+			"import React from 'react'",
+			"import PropTypes from 'prop-types'",
+			"import { connect } from 'react-redux'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props) {",
+			"\tconst {} = props",
+			"",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"$1.propTypes = {",
+			"\t",
+			"}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
+			""
+		],
+		"description": "Creates a React Function Component with PropTypes with connected redux"
+	},
+	"ReactFunctionMemoComponentWithPropTypesWithRedux": {
+		"prefix": "rfmcprdx",
+		"body": [
+			"import React, { memo } from 'react'",
+			"import { connect } from 'react-redux'",
+			"import PropTypes from 'prop-types'",
+			"",
+			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props) {",
+			"\tconst {} = props",
+			"",
+			"\treturn (",
+			"\t\t$0",
+			"\t)",
+			"}",
+			"",
+			"$1.propTypes = {}",
+			"",
+			"const mapStateToProps = (state) => ({",
+			"\t",
+			"})",
+			"",
+			"const mapDispatchToProps = (dispatch) => ({",
+			"\t",
+			"})",
+			"",
+			"export default connect(mapStateToProps, mapDispatchToProps)(memo($1))",
+			""
+		],
+		"description": "Creates a memorized React Function Component with connected redux"
+	},
+	"UseStateHook": {
+		"prefix": "rus",
+		"body": [
+			"const [${1:state}, set${1/(\\w)/${1:/capitalize}/}] = useState(${2:defaultValue})$0"
+		],
+		"description": "use state hooks"
+	},
+	"UseEffectHook": {
+		"prefix": "rue",
+		"body": ["useEffect(() => {", "\t$0", "}${1:, [$2]})"],
+		"description": "use effect hooks"
+	},
+	"UseContextHook": {
+		"prefix": "ruc",
+		"body": ["const ${2:value} = useContext(${1:MyContext});"],
+		"description": "use context hooks"
+	},
+	"UseReducerHook": {
+		"prefix": "rured",
+		"body": [
+			"const [${5:state}, ${6:dispatch}] = useReducer(${1:reducer}, ${2:initialStateOrInitializerArg}${3:, ${4:initializer}})"
+		],
+		"description": "use reducer hooks"
+	},
+	"UseCallbackHook": {
+		"prefix": "rucb",
+		"body": ["const ${1:memorizedCallback} = useCallback(() => {", "\t$0", "}, [$2])"],
+		"description": "use callback hooks"
+	},
+	"UseMemoHook": {
+		"prefix": "rum",
+		"body": ["const ${1:memorizedValue} = useMemo(() => {", "\t$0", "}, [$2])"],
+		"description": "use memo hooks"
+	},
+	"UseRefHook": {
+		"prefix": "ruref",
+		"body": ["const ${2:refContainer} = useRef(${1:initialValue});"],
+		"description": "use ref hooks"
+	},
+	"UseImperativeHandleHook": {
+		"prefix": "ruih",
+		"body": ["useImperativeHandle(${1:ref}, () => ({", "\t$0", "})${2:, [$3]})"],
+		"description": "use imperative handle hooks"
+	},
+	"Persistent Redux Store with RTK": {
+		"prefix": "rtkp",
+		"body": [
+			"import { combineReducers, configureStore, createSlice } from '@reduxjs/toolkit';",
+			"import { persistReducer, persistStore } from 'redux-persist';",
+			"import { FLUSH, REHYDRATE, PERSIST, REGISTER, PURGE, PAUSE } from 'redux-persist';",
+			"import storage from 'redux-persist/lib/storage';",
+			"import { logger } from 'redux-logger';",
+			"",
+			"// write all the store slices up here with createSlice()",
+			"$1",
+			"",
+			"const rootReducer = combineReducers({",
+			"\t// combine all slice reducers here",
+			"});",
+			"",
+			"// export const { each of the actions } = eachOfTheSlices.actions",
+			"",
+			"const persistConfig = {",
+			"\tkey: 'root',",
+			"\tstorage",
+			"};",
+			"",
+			"const persistedReducer = persistReducer(persistConfig, rootReducer);",
+			"",
+			"export const store = configureStore({",
+			"\treducer: persistedReducer,",
+			"\tmiddleware: getDefaultMiddleware =>",
+			"\t\tgetDefaultMiddleware({",
+			"\t\t\tserializableCheck: {",
+			"\t\t\t\tignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]",
+			"\t\t\t}",
+			"\t\t}).concat([logger])",
+			"});",
+			"",
+			"export const persistor = persistStore(store);"
+		]
+	},
+	"RTK Slice": {
+		"prefix": "slice",
+		"body": [
+			"export const ${1:counter}Slice = createSlice({",
+			"\tname: '$1',",
+			"\tinitialState: {},",
+			"\treducers: {}",
+			"});"
+		]
+	}
+}
