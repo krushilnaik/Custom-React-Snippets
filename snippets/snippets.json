@@ -13,30 +13,6 @@
 		"prefix": "<>",
 		"body": ["<>", "\t$0", "</>"]
 	},
-	"setState": {
-		"prefix": "ss",
-		"body": ["this.setState({$0})"],
-		"description": "Enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses."
-	},
-	"setStateWithUpdater": {
-		"prefix": "ssu",
-		"body": [
-			"this.setState((state${1:, props}) => {",
-			"\treturn {${0:stateChange}}",
-			"})"
-		],
-		"description": "Enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses."
-	},
-	"CreateRefs": {
-		"prefix": "cref",
-		"body": "this.${1:name}Ref = React.createRef()",
-		"description": "Create Refs statement used inside constructor"
-	},
-	"CreateRefsInFunction": {
-		"prefix": "fcref",
-		"body": "const ${1:name}Ref = React.createRef()",
-		"description": "Create Refs statement used inside function component"
-	},
 	"ContextProvider": {
 		"prefix": "ctp",
 		"body": [
@@ -46,31 +22,6 @@
 		],
 		"description": "Provider React Component for context object"
 	},
-	"Context Provider": {
-		"prefix": "cp",
-		"body": [
-			"export const $1 = React.createContext();",
-			"",
-			"const $1Provider = (props) => {",
-			"\t// Initial Provider State",
-			"\tconst state = {};",
-			"",
-			"\t// Reducer Function",
-			"\tconst $2 = (state, action) => {",
-			"\t\t",
-			"\t};",
-			"",
-			"\treturn (",
-			"\t\t<$1.Provider value={{state: state, $2}}>",
-			"\t\t\t{props.children}",
-			"\t\t</$1.Provider>",
-			"\t);",
-			"}",
-			"",
-			"export default $1Provider;"
-		],
-		"description": "Context Provider"
-	},
 	"ContextConsumer": {
 		"prefix": "ctc",
 		"body": [
@@ -79,59 +30,6 @@
 			"</${1:Context}.Consumer>"
 		],
 		"description": "Consumer React Component for context object"
-	},
-	"ReactClassComponent": {
-		"prefix": "rcc",
-		"body": [
-			"import React, { ${2|PureComponent,Component|} } from 'react'",
-			"",
-			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
-			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"",
-			"\t\tthis.state = {",
-			"\t\t\t",
-			"\t\t}",
-			"\t}",
-			"",
-			"\trender() {",
-			"\t\treturn (",
-			"\t\t\t$0",
-			"\t\t)",
-			"\t}",
-			"}",
-			"",
-			"export default $1"
-		],
-		"description": "Create a React Class Component or PureComponent"
-	},
-	"ReactClassComponentWithPropTypes": {
-		"prefix": "rccp",
-		"body": [
-			"import React, { ${2|PureComponent,Component|} } from 'react'",
-			"import PropTypes from 'prop-types'",
-			"",
-			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
-			"\tstatic propTypes = {}",
-			"",
-			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"",
-			"\t\tthis.state = {",
-			"\t\t\t",
-			"\t\t}",
-			"\t}",
-			"",
-			"\trender() {",
-			"\t\treturn (",
-			"\t\t\t$0",
-			"\t\t)",
-			"\t}",
-			"}",
-			"",
-			"export default $1"
-		],
-		"description": "Create a React Class Component with PropTypes"
 	},
 	"ReactFunctionComponent": {
 		"prefix": "rfc",
@@ -164,81 +62,6 @@
 			""
 		],
 		"description": "Create a memorized React Function Component"
-	},
-	"ReactClassComponentWithRedux": {
-		"prefix": "rccrdx",
-		"body": [
-			"import React, { ${2|PureComponent,Component|} } from 'react'",
-			"import { connect } from 'react-redux'",
-			"",
-			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
-			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"",
-			"\t\tthis.state = {",
-			"\t\t\t",
-			"\t\t}",
-			"\t}",
-			"",
-			"\trender() {",
-			"\t\treturn (",
-			"\t\t\t$0",
-			"\t\t)",
-			"\t}",
-			"}",
-			"",
-			"const mapStateToProps = (state) => ({",
-			"\t",
-			"})",
-			"",
-			"const mapDispatchToProps = (dispatch) => ({",
-			"\t",
-			"})",
-			"",
-			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
-			""
-		],
-		"description": "Creates a React Class Component with connected redux"
-	},
-	"ReactClassComponentWithPropTypesWithRedux": {
-		"prefix": "rccprdx",
-		"body": [
-			"import React, { ${2|PureComponent,Component|} } from 'react'",
-			"import PropTypes from 'prop-types'",
-			"import { connect } from 'react-redux'",
-			"",
-			"class ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} extends $2 {",
-			"\tstatic propTypes = {",
-			"\t\t",
-			"\t}",
-			"",
-			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"",
-			"\t\tthis.state = {",
-			"\t\t\t",
-			"\t\t}",
-			"\t}",
-			"",
-			"\trender() {",
-			"\t\treturn (",
-			"\t\t\t$0",
-			"\t\t)",
-			"\t}",
-			"}",
-			"",
-			"const mapStateToProps = (state) => ({",
-			"\t",
-			"})",
-			"",
-			"const mapDispatchToProps = (dispatch) => ({",
-			"\t",
-			"})",
-			"",
-			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
-			""
-		],
-		"description": "Creates a React Class Component with PropTypes with connected redux"
 	},
 	"ReactFunctionComponentWithRedux": {
 		"prefix": "rfcrdx",
@@ -295,68 +118,6 @@
 		],
 		"description": "Creates a memorized React Function Component with connected redux"
 	},
-	"ReactFunctionComponentWithPropTypesWithRedux": {
-		"prefix": "rfcprdx",
-		"body": [
-			"import React from 'react'",
-			"import PropTypes from 'prop-types'",
-			"import { connect } from 'react-redux'",
-			"",
-			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props) {",
-			"\tconst {} = props",
-			"",
-			"\treturn (",
-			"\t\t$0",
-			"\t)",
-			"}",
-			"",
-			"$1.propTypes = {",
-			"\t",
-			"}",
-			"",
-			"const mapStateToProps = (state) => ({",
-			"\t",
-			"})",
-			"",
-			"const mapDispatchToProps = (dispatch) => ({",
-			"\t",
-			"})",
-			"",
-			"export default connect(mapStateToProps, mapDispatchToProps)($1)",
-			""
-		],
-		"description": "Creates a React Function Component with PropTypes with connected redux"
-	},
-	"ReactFunctionMemoComponentWithPropTypesWithRedux": {
-		"prefix": "rfmcprdx",
-		"body": [
-			"import React, { memo } from 'react'",
-			"import { connect } from 'react-redux'",
-			"import PropTypes from 'prop-types'",
-			"",
-			"function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(props) {",
-			"\tconst {} = props",
-			"",
-			"\treturn (",
-			"\t\t$0",
-			"\t)",
-			"}",
-			"",
-			"$1.propTypes = {}",
-			"",
-			"const mapStateToProps = (state) => ({",
-			"\t",
-			"})",
-			"",
-			"const mapDispatchToProps = (dispatch) => ({",
-			"\t",
-			"})",
-			"",
-			"export default connect(mapStateToProps, mapDispatchToProps)(memo($1))",
-			""
-		],
-		"description": "Creates a memorized React Function Component with connected redux"
-	},
 	"UseStateHook": {
 		"prefix": "rus",
 		"body": [
@@ -383,7 +144,11 @@
 	},
 	"UseCallbackHook": {
 		"prefix": "rucb",
-		"body": ["const ${1:memorizedCallback} = useCallback(() => {", "\t$0", "}, [$2])"],
+		"body": [
+			"const ${1:memorizedCallback} = useCallback(() => {",
+			"\t$0",
+			"}, [$2])"
+		],
 		"description": "use callback hooks"
 	},
 	"UseMemoHook": {
@@ -398,7 +163,11 @@
 	},
 	"UseImperativeHandleHook": {
 		"prefix": "ruih",
-		"body": ["useImperativeHandle(${1:ref}, () => ({", "\t$0", "})${2:, [$3]})"],
+		"body": [
+			"useImperativeHandle(${1:ref}, () => ({",
+			"\t$0",
+			"})${2:, [$3]})"
+		],
 		"description": "use imperative handle hooks"
 	},
 	"Persistent Redux Store with RTK": {
